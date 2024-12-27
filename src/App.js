@@ -13,8 +13,7 @@ const App = () => {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
-          },
-          mode: 'cors'
+          }
         });
 
         if (!res.ok) { // Use res.ok for checking successful status codes (200-299)
@@ -23,7 +22,7 @@ const App = () => {
         }
 
         const jsonData = await res.json();
-        setData(jsonData);
+        setData(jsonData["total_profit"]);
       } catch (err) {
         setError(err);
       } finally {
@@ -44,8 +43,8 @@ const App = () => {
 
   return (
     <div>
-      <h1>Welcome to My React App!</h1>
-      {data && (
+      <h3>Welcome to My React App!</h3>
+      <pre>OITrade profit:</pre> {data && (
         <pre>{JSON.stringify(data, null, 2)}</pre> // Display the data in a readable format
         //Or access the data like data.someProperty
       )}
